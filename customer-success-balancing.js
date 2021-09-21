@@ -9,7 +9,11 @@ function getResults(customerService) {
   const customerServicesMoreClients = customerService[0];
   const secoundCustomerServicesMoreClient = customerService[1];
 
-  return customerServicesMoreClients.customerAvailableForClient === secoundCustomerServicesMoreClient.customerAvailableForClient ? 0 : customerServicesMoreClients.id;
+  if (Object.is(customerServicesMoreClients.customerAvailableForClient, secoundCustomerServicesMoreClient.customerAvailableForClient)) {
+    return 0;
+  }
+
+  return customerServicesMoreClients.id;
 } 
 
  function customerSuccessBalancing(
