@@ -5,17 +5,6 @@
  * @param {array} customerSuccessAway
  */
 
-function compareClientScoreWithCustomer(customerSuccess, customers) {
-  let count = 0;
-
-  customers.forEach((customer) => {
-    if (customer.score <= customerSuccess.score) {
-      unattendend.delete(customer);
-      count++;
-    }
-  });
-}
-
 function getResults(customerService) {
   const customerServicesMoreClients = customerService[0];
   const secoundCustomerServicesMoreClient = customerService[1];
