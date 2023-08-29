@@ -17,7 +17,7 @@ function mapEntities(arr) {
   }));
 }
 
-test("Scenario 1", () => {
+test("Cenario 1", () => {
   css = [
     { id: 1, score: 60 },
     { id: 2, score: 20 },
@@ -38,7 +38,7 @@ test("Scenario 1", () => {
 });
 
 
-test("Scenario 2", () => {
+test("Cenario 2", () => {
   css = mapEntities([11, 21, 31, 3, 4, 5]);
   customers = mapEntities([10, 10, 10, 20, 20, 30, 30, 30, 20, 60]);
   csAway = [];
@@ -46,7 +46,7 @@ test("Scenario 2", () => {
   expect(customerSuccessBalancing(css, customers, csAway)).toEqual(0);
 });
 
-test("Scenario 3", () => {
+test("Cenario 3", () => {
   const testTimeoutInMs = 100;
   const testStartTime = new Date().getTime();
 
@@ -62,7 +62,7 @@ test("Scenario 3", () => {
   }
 });
 
-test("Scenario 4", () => {
+test("Cenario 4", () => {
   css = mapEntities([1, 2, 3, 4, 5, 6]);
   customers = mapEntities([10, 10, 10, 20, 20, 30, 30, 30, 20, 60]);
   csAway = [];
@@ -70,7 +70,7 @@ test("Scenario 4", () => {
   expect(customerSuccessBalancing(css, customers, csAway)).toEqual(0);
 });
 
-test("Scenario 5", () => {
+test("Cenario 5", () => {
   css = mapEntities([100, 2, 3, 3, 4, 5]);
   customers = mapEntities([10, 10, 10, 20, 20, 30, 30, 30, 20, 60]);
   csAway = [];
@@ -78,7 +78,7 @@ test("Scenario 5", () => {
   expect(customerSuccessBalancing(css, customers, csAway)).toEqual(1);
 });
 
-test("Scenario 6", () => {
+test("Cenario 6", () => {
   css = mapEntities([100, 99, 88, 3, 4, 5]);
   customers = mapEntities([10, 10, 10, 20, 20, 30, 30, 30, 20, 60]);
   csAway = [1, 3, 2];
@@ -86,7 +86,7 @@ test("Scenario 6", () => {
   expect(customerSuccessBalancing(css, customers, csAway)).toEqual(0);
 });
 
-test("Scenario 7", () => {
+test("Cenario 7", () => {
   css = mapEntities([100, 99, 88, 3, 4, 5]);
   customers = mapEntities([10, 10, 10, 20, 20, 30, 30, 30, 20, 60]);
   csAway = [4, 5, 6];
