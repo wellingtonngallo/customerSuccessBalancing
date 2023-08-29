@@ -1,49 +1,20 @@
-/**
- * Returns the id of the CustomerSuccess with the most customers
- * @param {array} customerSuccess
- * @param {array} customers
- * @param {array} customerSuccessAway
- */
+const customerSuccessBalancing = require('./customerSuccessBalancing.js')
 
-function getResults(customerService) {
-  const customerServicesMoreClients = customerService[0];
-  const secoundCustomerServicesMoreClient = customerService[1];
+function buildSizeEntities(size, score) {
+  const result = [];
 
-  if (Object.is(customerServicesMoreClients.customerAvailableForClient, secoundCustomerServicesMoreClient.customerAvailableForClient)) {
-    return 0;
+  for (let i = 0; i < size; i += 1) {
+    result.push({ id: i + 1, score });
   }
-
-  return customerServicesMoreClients.id;
-} 
-
- function customerSuccessBalancing(
-  customerSuccess,
-  customers,
-  customerSuccessAway
-) {
-  const getCustomerAvailable = customerSuccess.filter(item => !customerSuccessAway.includes(item.id));
-  const sortCustomers = getCustomerAvailable.sort((a, b) => a.score - b.score);
-  let uniqueCustomer = new Set(customers);
-
-  const customerService = sortCustomers.map(customerSuccess => {
-    let customerAvailableForClient = 0;
-
-    uniqueCustomer.forEach((customer) => {
-      if (customer.score <= customerSuccess.score) {
-        uniqueCustomer.delete(customer);
-        customerAvailableForClient++;
-      }
-    });
-
-    return {
-      ...customerSuccess,
-      customerAvailableForClient,
-    };
-  }).sort((a, b) => b.customerAvailableForClient - a.customerAvailableForClient);
-
-  const result = getResults(customerService);
-
+  
   return result;
+}
+
+function mapEntities(arr) {
+  return arr.map((item, index) => ({
+    id: index + 1,
+    score: item,
+  }));
 }
 
 test("Scenario 1", () => {
@@ -66,20 +37,6 @@ test("Scenario 1", () => {
   expect(customerSuccessBalancing(css, customers, csAway)).toEqual(1);
 });
 
-function buildSizeEntities(size, score) {
-  const result = [];
-  for (let i = 0; i < size; i += 1) {
-    result.push({ id: i + 1, score });
-  }
-  return result;
-}
-
-function mapEntities(arr) {
-  return arr.map((item, index) => ({
-    id: index + 1,
-    score: item,
-  }));
-}
 
 test("Scenario 2", () => {
   css = mapEntities([11, 21, 31, 3, 4, 5]);
